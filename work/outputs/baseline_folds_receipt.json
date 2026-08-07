@@ -1,0 +1,53 @@
+{
+  "split": "client-grouped, deterministic 5-way hash fold",
+  "metric": "precision@K",
+  "K": [
+    20,
+    50,
+    100
+  ],
+  "tie_policy": "score desc, then seeded content-hash asc",
+  "whole_frame_base_rate": 0.2487,
+  "folds": [
+    {
+      "fold": 0,
+      "n_test": 25520,
+      "base_rate": 0.2153,
+      "precision@20": 0.1,
+      "precision@50": 0.2,
+      "precision@100": 0.18
+    },
+    {
+      "fold": 1,
+      "n_test": 4276,
+      "base_rate": 0.1284,
+      "precision@20": 0.05,
+      "precision@50": 0.08,
+      "precision@100": 0.05
+    },
+    {
+      "fold": 2,
+      "n_test": 6675,
+      "base_rate": 0.6649,
+      "precision@20": 0.9,
+      "precision@50": 0.88,
+      "precision@100": 0.86
+    },
+    {
+      "fold": 3,
+      "n_test": 16084,
+      "base_rate": 0.2743,
+      "precision@20": 0.65,
+      "precision@50": 0.38,
+      "precision@100": 0.41
+    },
+    {
+      "fold": 4,
+      "n_test": 28966,
+      "base_rate": 0.1859,
+      "precision@20": 0.45,
+      "precision@50": 0.34,
+      "precision@100": 0.32
+    }
+  ]
+}
