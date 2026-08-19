@@ -1,0 +1,53 @@
+{
+  "snapshot": "warehouse pulled at run time",
+  "before": {
+    "mean_fold_P@50": 0.672,
+    "pooled_P@50": 0.56,
+    "week5_receipt_mean_fold_P@50": 0.676,
+    "test_base_rate": 0.2487
+  },
+  "after": {
+    "time_only": {
+      "P@20": 0.1,
+      "P@50": 0.1,
+      "P@100": 0.14,
+      "AUC": 0.5253,
+      "top50_declining_share": 0.1
+    },
+    "time_plus_grouped": {
+      "mean_fold_P@50": 0.384,
+      "pooled_P@50": 0.2,
+      "folds": [
+        0.24,
+        0.08,
+        1.0,
+        0.42,
+        0.18
+      ]
+    },
+    "robustness_nov_dec_P@50": 0.28
+  },
+  "correlations_feature_vs_label": {
+    "dec_jan_train": {
+      "log_imp": 0.0578,
+      "log_clk": -0.0596,
+      "pos": 0.1333,
+      "days": -0.0181,
+      "age": 0.0755
+    },
+    "nov_dec_train": {
+      "log_imp": 0.0895,
+      "log_clk": 0.072,
+      "pos": 0.0392,
+      "days": 0.1664,
+      "age": 0.0344
+    },
+    "march_test": {
+      "log_imp": -0.0944,
+      "log_clk": -0.1298,
+      "pos": 0.0334,
+      "days": 0.0298,
+      "age": 0.0564
+    }
+  }
+}
