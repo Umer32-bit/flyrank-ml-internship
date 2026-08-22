@@ -11,6 +11,11 @@
     "warehouse_access": "none - this notebook is offline by design"
   },
   "archetypes": {
+    "thin_history": {
+      "rule": "days_with_imp_prev30<15 (no-go N4: excluded from all actions)",
+      "action": "wait_for_history",
+      "reason_code": "THIN_HISTORY"
+    },
     "fragile_snippet": {
       "rule": "imp_prev30>=500 AND ctr<0.1%",
       "action": "rewrite_snippet",
@@ -45,9 +50,9 @@
   "ranking": "tier asc (act-now 0 / watch 1 / none 2), then imp_prev30 desc, then seeded content-hash asc",
   "queue_stats": {
     "rows_total": 81521,
-    "act_now": 39955,
-    "watch": 8233,
-    "no_action": 33333,
+    "act_now": 38256,
+    "watch": 15546,
+    "no_action": 27719,
     "base_rate_declining": 0.2487
   },
   "honest_performance_P@50": {
@@ -72,7 +77,7 @@
     "M3": {
       "metric": "time+grouped mean fold P@50",
       "threshold": "< 0.30 or any fold < 0.10",
-      "status": "WATCH - recheck on newest closed month"
+      "status": "TRIPPED on W6 window - retrain + full audit before any queue ships"
     },
     "M4": {
       "metric": "stale_but_visible share",
