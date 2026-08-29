@@ -298,6 +298,11 @@
         <li><b>Product flags / future signals.</b> None in the feature set.</li>
       </ol>
       <p>And a fourth check, which motivated the time-aware protocol in the first place: <b>stability.</b> Feature&ndash;label correlations re-estimated in three windows &mdash; and they <b>flip sign</b> between Nov&ndash;Dec and March (<span class="mono">log_clk_prev30</span>: <span class="mono">+0.072</span> &rarr; <span class="mono">&minus;0.130</span>). A signal that changes sign with the month is not a forward predictor.</p>
+
+      <div class="callout warn">
+        <b>Leakage harness &mdash; the test can fail</b>
+        A checklist can say &ldquo;no leakage&rdquo; while the check is too weak to notice one. So the build ran a planned bad input: <span class="mono">imp_last30</span> &mdash; half the label&rsquo;s own definition &mdash; was added to the feature set on an identical held-out split (<span class="mono">w03_data_contract.ipynb</span>, Verification D). Precision jumped to <b>0.993</b> (a <b>+0.328</b> jump on the same split): the model was simply reading the answer before the exam. The column was then deleted, and only the honest, grouped result is reported. A clean run that <em>never</em> reacts to a known-bad field would be the warning, not a win &mdash; here the harness proves the boundary actually catches a leak when one is present.
+      </div>
     </section>
 
     <section id="results">
@@ -434,6 +439,7 @@
         <tr><td>Figure 3 (cost/value)</td><td><span class="mono">w07_action_playbook.ipynb</span> &rarr; <span class="mono">fig_w07_traffic_at_stake.png</span></td></tr>
         <tr><td>Figure 4 (archetypes)</td><td><span class="mono">w07_action_playbook.ipynb</span> &rarr; <span class="mono">fig_w07_archetypes.png</span></td></tr>
         <tr><td>queue ledger (top rows)</td><td><span class="mono">w07_action_playbook.ipynb</span> &rarr; <span class="mono">w07_action_queue.csv</span> (regenerable, out of git)</td></tr>
+        <tr><td>leakage harness (deliberate bad-input test)</td><td><span class="mono">w03_data_contract.ipynb</span>, Verification D &mdash; <span class="mono">imp_last30</span> added &rarr; P@50 0.993 &rarr; deleted (honest grouped number kept)</td></tr>
         <tr><td>leakage audit + time-aware numbers</td><td><span class="mono">w06_validation_audit.ipynb</span> &rarr; <span class="mono">w06_validation_audit_receipt.json</span></td></tr>
         <tr><td>monitoring triggers M1&ndash;M5</td><td><span class="mono">w07_action_playbook.ipynb</span> &rarr; <span class="mono">w07_playbook_receipt.json</span></td></tr>
       </table>
